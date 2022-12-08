@@ -79,20 +79,6 @@ print('Project initialized.', flush=True)
 # load data
 ###############################################################################
 
-# train_path = os.path.join(dataset_path, 'pop909+mlpv_t32_train_fix1.npy')
-# val_path = os.path.join(dataset_path, 'pop909+mlpv_t32_val_fix1.npy')
-# train_dataset = PolyphonicDataset(train_path, DOWN_AUG, UP_AUG)
-# val_dataset = PolyphonicDataset(val_path, 0, 0)
-
-# data_dir = "/home/tobias/Music_Generation/ambroseMidis/dataset"
-
-# all_file_names = [os.path.join(scores_dir, name) for name in os.listdir(scores_dir) if os.path.isfile(os.path.join(scores_dir, name))]
-
-# train_partition, val_partition = ambroseDataset.partition_data(all_file_names, 0.95)
-
-# training_data = ambroseDataset.AmbroseDataset(train_partition)
-# val_data = ambroseDataset.AmbroseDataset(val_partition)
-
 entr = None
 if ENTROPY_LEVEL == "low_entropy":
     entr = 0

@@ -1,10 +1,9 @@
+import random
+
 import torch
 from torch import nn
-from torch.nn import functional as F
-from torch.nn.utils.rnn import pad_sequence, pack_padded_sequence
 from torch.distributions import Normal
-import random
-import numpy as np
+from torch.nn.utils.rnn import pack_padded_sequence
 
 
 class VAE(nn.Module):

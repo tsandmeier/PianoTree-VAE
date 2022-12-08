@@ -1,17 +1,17 @@
-import torch
-from torch import nn
 import os
 import sys
-import json
-import numpy as np
-import utils
-from torch import optim
-from utils import MinExponentialLR, loss_function, scheduled_sampling
-from model import VAE
-from tensorboardX import SummaryWriter
-from dataset import PolyphonicDataset
 import time
+
+import torch
+from tensorboardX import SummaryWriter
+from torch import nn
+from torch import optim
 from torch.utils.data import DataLoader
+
+import utils
+from dataset import PolyphonicDataset
+from model import VAE
+from utils import MinExponentialLR, loss_function, scheduled_sampling
 
 ###############################################################################
 # Load config

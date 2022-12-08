@@ -1,7 +1,8 @@
+import json
+
 import numpy as np
-import json, sys, os
-from torch import nn
 import torch
+from torch import nn
 from torch.distributions import kl_divergence, Normal
 from torch.optim.lr_scheduler import ExponentialLR
 
