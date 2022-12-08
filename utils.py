@@ -5,12 +5,14 @@ import torch
 from torch.distributions import kl_divergence, Normal
 from torch.optim.lr_scheduler import ExponentialLR
 
+
 def load_dataset_path(fn='model_config.json'):
     with open(fn) as f:
         paths = json.load(f)['dataset_path']
 
     train_val_path = paths['hpc_data_path']
     return train_val_path
+
 
 def load_params_dict(key, fn='model_config.json'):
     with open(fn) as f:
@@ -28,6 +30,7 @@ def init_weights(m):
             nn.init.normal_(param.data, mean=0, std=0.01)
         else:
             nn.init.constant_(param.data, 0)
+
 
 def standard_normal(shape):
     N = Normal(torch.zeros(shape), torch.ones(shape))
@@ -53,14 +56,14 @@ def loss_function(recon_pitch, pitch, recon_dur, dur,
     # dur_loss = dur_criterion(recon_dur, dur)  # (bs * 32 * 15 * 5)
     # dur_loss = dur_loss.view(-1, 5)  # some hard code here
     w = torch.tensor([1, 0.6, 0.4, 0.3, 0.3],
-                      dtype=float,
-                      device=recon_dur.device)
+                     dtype=float,
+                     device=recon_dur.device)
     # dur_loss = (dur_loss * w).mean()
     dur_loss = w[0] * dur0 + w[1] * dur1 + w[2] * dur2 + w[3] * dur3 + \
                w[4] * dur4
     kl_div = kl_divergence(dist, normal).mean()
     loss = weights[0] * pitch_loss + weights[1] * dur_loss + \
-        weights[2] * kl_div
+           weights[2] * kl_div
     return loss, pitch_loss, dur_loss, kl_div
 
 
@@ -89,7 +92,6 @@ def scheduled_sampling(i, high=0.7, low=0.05):
     z = 1 / (1 + np.exp(x))
     y = (high - low) * z + low
     return y
-
 
 
 def piano_roll_to_target(pr):
@@ -131,10 +133,10 @@ def target_to_3dtarget(pr_mat, max_note_count=11, max_pitch=107, min_pitch=22,
     including <sos> and <eos> tokens.
     :param max_pitch: the highest pitch in the dataset.
     :param min_pitch: the lowest pitch in the dataset.
-    :param pitch_pad_ind: see return value.
-    :param dur_pad_ind: see return value.
-    :param pitch_sos_ind: sos token.
-    :param pitch_eos_ind: eos token.
+    :param pitch_pad_ind: see return value.     PLatzhalter bei pitch
+    :param dur_pad_ind: see return value.   wert 2 als PLatzhalter bei duration
+    :param pitch_sos_ind: sos token.    start of step!
+    :param pitch_eos_ind: eos token.       end of step!
     :return: pr_mat3d is a (32, max_note_count, 6) matrix. In the last dim,
     the 0th column is for pitch, 1: 6 is for duration in binary repr. Output is
     padded with <sos> and <eos> tokens in the pitch column, but with pad token

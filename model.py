@@ -337,5 +337,3 @@ class VAE(nn.Module):
                                                 teacher_forcing_ratio1,
                                                 teacher_forcing_ratio2)
         return pitch_outs, dur_outs, dist
-
-

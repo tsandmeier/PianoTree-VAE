@@ -4,7 +4,8 @@
     "model_path": "./models",
     "log_path": "./log",
     "demo_path": "./demo",
-    "stats_data_path": "./stats_data"
+    "stats_data_path": "./stats_data",
+    "entropy_level": "high_entropy"
   },
   "dataset_path": {
     "hpc_data_path": "./data/"
