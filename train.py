@@ -81,7 +81,6 @@ val_dataset = PolyphonicDataset(val_path, 0, 0)
 train_loader = DataLoader(train_dataset, BATCH_SIZE, True)
 val_loader = DataLoader(val_dataset, BATCH_SIZE, True)
 
-print(len(train_dataset), len(val_dataset), flush=True)
 print('Dataset loaded!', flush=True)
 
 ###############################################################################

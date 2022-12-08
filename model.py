@@ -314,8 +314,6 @@ class VAE(nn.Module):
                 token = token.view(-1, 2 * self.dec_emb_hid_size).unsqueeze(1)
         pitch_outs = torch.cat(pitch_outs, dim=1)
         dur_outs = torch.cat(dur_outs, dim=1)
-        # print(pitch_outs.size())
-        # print(dur_outs.size())
         return pitch_outs, dur_outs
 
     def forward(self, x, inference=False, sample=True,

@@ -93,7 +93,6 @@ val_data = ambroseDataset.AmbroseDataset(dataset_path, fraction=0.05, train=Fals
 train_loader = DataLoader(training_data, BATCH_SIZE, True)
 val_loader = DataLoader(val_data, BATCH_SIZE, True)
 
-print(len(training_data), len(val_data), flush=True)
 print('Dataset loaded!', flush=True)
 
 ###############################################################################

@@ -75,19 +75,4 @@ def partition_data(raw_data, train_percent):
 
 
 if __name__ == '__main__':
-    daten_low = AmbroseDataset("/home/tobias/Music_Generation/ambroseMidis/dataset", entropy=0)
-    daten_mid = AmbroseDataset("/home/tobias/Music_Generation/ambroseMidis/dataset", entropy=1)
-    daten_high = AmbroseDataset("/home/tobias/Music_Generation/ambroseMidis/dataset", entropy=2, train=False)
-
-    print("LOW : ", len(daten_low))
-    print("MID: ", len(daten_mid))
-    print("HIGH: ", len(daten_high))
-
-    daten_low = AmbroseDataset("/home/tobias/Music_Generation/ambroseMidis/dataset", entropy=0, fraction=0.75)
-    daten_mid = AmbroseDataset("/home/tobias/Music_Generation/ambroseMidis/dataset", entropy=1, fraction=0.95)
-    daten_high = AmbroseDataset("/home/tobias/Music_Generation/ambroseMidis/dataset", entropy=2, fraction=0.85,
-                                train=False)
-
-    print("LOW : ", len(daten_low))
-    print("MID: ", len(daten_mid))
-    print("HIGH: ", len(daten_high))
+    pass
